@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: rgb(31, 23, 8);
+        }
+        h1{
+            text-align: center;
+            background: linear-gradient(to right, red 12%, blue);
+            -webkit-background-clip:text;
+            background-clip:text;
+            color: transparent;
+            padding: 10px;
+        }
+
+        form{
+            padding: 10px;
+            text-align: center;
+            background-color:rgba(205, 70, 70, 0.367);
+            color: rgb(0, 0, 0);
+            font-size: large;
+            border-radius: 10px;
+            /* opacity: 70%; */
+        }
+
+        .form-control{
+            border: none;
+            background-color: rgba(255,255,255,0.5);
+        }
+       
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid " id="heading">
+        <h1>To-Do-List</h1>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-7 ">
+                <form id="form" onsubmit="formSubmit(event)">
+                    <div class="form-group mb-2 ">
+                        <label for="task"  >Task</label>
+                        <input type="text" class="form-control" id="task" name="task" placeholder="Enter Task">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit">ADD</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <ul id="list" class="mt-3  ">
+    </ul>
+
+    <script>
+        var deleteAllBtn = document.createElement("button");
+        deleteAllBtn.classList = "btn btn-danger";
+        deleteAllBtn.innerHTML = "Delete All";
+        deleteAllBtn.style.marginLeft = "10px";
+        // document.getElementById("list").appendChild(deleteAllBtn);
+
+        //add delete all button to the form
+        var form = document.getElementById("form");
+        form.appendChild(deleteAllBtn);
+
+        
+        function formSubmit(event) {
+            event.preventDefault();
+            var btn = document.createElement("button");
+            btn.classList = "btn btn-danger";
+            btn.innerHTML = "Delete";
+            btn.style.marginLeft = "10px";
+    
+            var task = document.getElementById("task").value;
+            var li = document.createElement("li");
+            li.classList="mt-2"
+            li.style.color = "white";
+            li.innerHTML = `${task}`;//  ${btn.outerHTML}`;<----- here essentially adding a string representation of the button element's HTML to the li element. This string representation didn't retain any connection to the original button element itself. 
+            li.appendChild(btn);
+    
+            btn.onclick = function() {
+                deleteItem(li); // Pass the li element to the deleteItem function
+            };
+    
+            document.getElementById("list").appendChild(li);
+            document.getElementById("form").reset();
+
+            //save task to local storage
+            localStorage.setItem("task", task);
+
+
+
+        }
+    
+        function deleteItem(liItem) { // Corrected parameter name to better reflect its purpose
+            liItem.parentNode.removeChild(liItem);
+            //delete task from local storage
+            localStorage.removeItem("task");
+
+        }
+        // function deleteAll() {
+        //     document.getElementById("list").innerHTML = "";
+        // };//button not added yet
+        
+        //retrieve tasks from local storage on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            var task = localStorage.getItem("task");
+            var li = document.createElement("li");
+            li.classList="mt-2"
+            li.style.color = "white";
+            li.innerHTML = `${task}`;
+            document.getElementById("list").appendChild(li);
+            //add delete button
+            var btn = document.createElement("button");
+            btn.classList = "btn btn-danger";
+            btn.innerHTML = "Delete";
+            btn.style.marginLeft = "10px";
+            li.appendChild(btn);
+            btn.onclick = function() {
+                deleteItem(li); // Pass the li element to the deleteItem function
+            };
+            //prevent null task from being added from local storage
+            if(task === null){
+                li.style.display = "none";
+            }
+
+        });
+
+        //delete all button with functionality
+        // var deleteAllBtn = document.createElement("button");
+        // deleteAllBtn.classList = "btn btn-danger";
+        // deleteAllBtn.innerHTML = "Delete All";
+        // deleteAllBtn.style.marginLeft = "10px";
+        // document.getElementById("list").appendChild(deleteAllBtn);
+        deleteAllBtn.onclick = function() {
+            document.getElementById("list").innerHTML = "";
+            //delete all tasks from local storage
+            localStorage.clear();
+            var ulElements = document.getElementsByTagName("ul");
+            for (var i = ulElements.length - 1; i >= 0; i--) {
+                ulElements[i].remove();
+            }
+
+            /////////////////////////////////////////
+            ///////// Recreate the ul element////////
+            //still delete btn appears on page load//
+            /////////////////////////////////////////
+            var ul = document.createElement("ul");
+            ul.id = "list";
+            document.body.appendChild(ul);
+        };
+
+    </script>
+    
+</body>
+</html>
