@@ -30,6 +30,9 @@ input{
     min-width:240px;
     width:300px;
     margin-right: 5px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 #btn{
@@ -55,14 +58,16 @@ input{
     padding: 10px;
     margin:10px;
 }
-
+ul{
+    margin-left: 10vw;
+}
 li{
     color: aliceblue;
 }
 
 #done{
     margin-left: 10px;
-    border: 2px solid darkmagenta;
+    border: 2px dotted darkmagenta;
     background: none;
     color: beige;
     border-radius:10px ;
