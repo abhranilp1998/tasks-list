@@ -1,0 +1,70 @@
+body{
+    background: linear-gradient(to right, black 10px, rgb(10, 4, 43), rgb(0, 0, 73));
+}
+
+h1{
+    /* position: relative; */
+    /* margin-left: 45%;  */
+    justify-content: center;
+    text-align: center;
+    font-size: 2.0rem;
+    color: rgb(16, 79, 79);
+}
+
+
+
+label{
+    margin-left: 10%;
+    margin-right: 5px;
+    color: antiquewhite;
+     /* text-align: center;  */
+     justify-content: center;
+
+
+}
+/* #notes{ */
+    
+/* }  */
+
+input{
+    min-width:240px;
+    width:300px;
+    margin-right: 5px;
+}
+
+#btn{
+    width: 40px;
+    background-color: blueviolet;
+    border-radius: 15% 25%;
+    border:1px solid black;
+   
+}
+
+#btns{
+    text-align: center;
+    justify-content: center;
+    /* color: rgb(100, 4, 4); */
+    /* background-color: rgb(0, 0, 0); */
+    /* border: none; */
+}
+#delete-all{
+    color: burlywood;
+    background-color: brown;
+    border: none;
+    border-radius: 25% 10%;
+    padding: 10px;
+    margin:10px;
+}
+
+li{
+    color: aliceblue;
+}
+
+#done{
+    margin-left: 10px;
+    border: 2px solid darkmagenta;
+    background: none;
+    color: beige;
+    border-radius:10px ;
+    padding: 2px;
+}

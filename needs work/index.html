@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notes app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="heading">
+            <h1>Notes App</h1>
+        </div>
+    </div>
+
+    <div class= "container" id="notes">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="form-label" id="form-label">Task:</label>
+                <input type="text" id="task" placeholder="Enter Task">
+                <button type="submit" id="btn" onclick="submitTask(event)">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div  id="btns">
+        <button id="delete-all" onclick="deleteAll(event)">Delete All</button>
+    </div>
+
+    <div class="container" id="list">
+        <ul id="list-items" class="list-group">
+            <!-- <li>test item <button id="done" onclick="done(event)">Done</button></li> -->
+        </ul>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
