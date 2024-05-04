@@ -16,6 +16,7 @@
         }
 
         #calculator{
+            opacity: 90%;
             font-family: Arial, sans-serif;
             background-color: hsl(0, 0%, 15%);
             border-radius: 15px;
@@ -32,6 +33,7 @@
             border: none;
             background-color: hsl(0, 0%, 25%);
             color: rgb(124, 191, 250);
+            /* opacity: 1;   not working */
         }
 
 
@@ -74,11 +76,23 @@
         .btn-evaluate:active{
             background-color: rgb(255, 222, 160);
         }
+        #top-image{
+            position: fixed;
+            top: -140px;
+            width: auto;
+            height: auto;
+            z-index: -999;
+            max-width: 100%;
+        }
         
 
     </style>
 </head>
 <body>
+
+    <img src="leopard.png" alt="" id="top-image">
+
+
     <div id="calculator">
         <input id="display" readonly>
 
