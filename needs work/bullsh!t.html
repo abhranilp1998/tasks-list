@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Page</title>
+    <style>
+        #lyrics{
+            color: brown;
+        }
+        button{
+            margin-left: 30vb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Full Fun</h1>
+
+    <div id="items">
+        <button id="btn-lyrics" onclick="cole()">Show Lyrics</button>
+    </div>
+    <div>
+        <h1 id="lyrics"></h1>
+    </div>
+
+    <script>
+        function cole() {
+            var lyricsElement = document.getElementById("lyrics");
+            var buttonElement = document.getElementById("btn-lyrics");
+
+            if (lyricsElement.innerHTML === "we the big three like we started the league") {
+                lyricsElement.innerHTML = "Is it K DOT, is it Aubrey or me??";
+                buttonElement.innerHTML = "Switch---> Reply!!";
+            } 
+            else if(lyricsElement.innerHTML === "Is it K DOT, is it Aubrey or me??"){
+                lyricsElement.innerHTML = "MothaFuck THE BIG THREE. NIGGA its jus big MEE. NIGGA BUM!!";
+                // buttonElement.innerHTML = "More DOT";
+                buttonElement.style.display="none";
+            }
+            // executed first as nothing in h1
+            else {
+                lyricsElement.innerHTML = "we the big three like we started the league";
+                buttonElement.innerHTML = "More";
+            }
+        }
+    </script>
+</body>
+</html>
